@@ -13,9 +13,7 @@ INVALID_URL = "https://www.example.com/"
 @pytest.fixture
 def app():
     DEBUG = os.environ.get("DEBUG", "False") == "True"
-    app = create_app(debug=DEBUG)
-
-    return app
+    return create_app(debug=DEBUG)
 
 
 def test_tiktok_api(app):

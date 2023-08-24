@@ -6,9 +6,7 @@ import os
 
 
 def create_app(debug: bool = False):
-    # Check if debug environment variable was passed
-    FLASK_DEBUG = os.environ.get("FLASK_DEBUG", False)
-    if FLASK_DEBUG:
+    if FLASK_DEBUG := os.environ.get("FLASK_DEBUG", False):
         debug = FLASK_DEBUG
 
     # Create the Flask application instance

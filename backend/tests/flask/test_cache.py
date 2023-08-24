@@ -8,9 +8,7 @@ from app.utils.cache import get_cached_response
 
 @pytest.fixture
 def app():
-    app = create_app()
-
-    return app
+    return create_app()
 
 
 def test_api_cache(app):
@@ -25,4 +23,4 @@ def test_api_cache(app):
     request = response.request
     is_cached = get_cached_response(request)
 
-    assert bool(is_cached) is True
+    assert bool(is_cached)

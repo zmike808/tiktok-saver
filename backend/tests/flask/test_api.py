@@ -7,8 +7,7 @@ from app import create_app
 
 @pytest.fixture
 def app():
-    app = create_app()
-    return app
+    return create_app()
 
 
 def test_api_success(app):

@@ -34,13 +34,15 @@ def format_post_json(post: dict) -> VideoInfo | None:
     video_link = video_format.get("url", None)
     video_thumbnail = post.get("thumbnail", "")
 
-    video_info = VideoInfo(filename=filename, is_watermarked=is_watermarked,
-                           duration=video_duration, description=video_description,
-                           video_link=video_link, thumbnail=video_thumbnail)
-
-    return video_info
+    return VideoInfo(
+        filename=filename,
+        is_watermarked=is_watermarked,
+        duration=video_duration,
+        description=video_description,
+        video_link=video_link,
+        thumbnail=video_thumbnail,
+    )
 
 
 def format_video_info(data: dict):
-    video_info = format_post_json(data)
-    return video_info
+    return format_post_json(data)
