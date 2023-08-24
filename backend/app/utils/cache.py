@@ -8,14 +8,16 @@ from app.extensions import cache
 
 def make_api_cache_key(request: Request):
     full_url = request.url
-    api_cache_url = full_url.split("/api/")[-1]
-    return api_cache_url
+    return full_url.split("/api/")[-1]
 
 
 def is_exempted_route(route_path: str):
-    if any(route_path.startswith(x) for x in current_app.config["CACHE_EXEMPTED_ROUTES"]):
-        return True
-    return False
+    return any(
+        (
+            route_path.startswith(x)
+            for x in current_app.config["CACHE_EXEMPTED_ROUTES"]
+        )
+    )
 
 
 def get_cached_response(request: Request):
@@ -28,7 +30,7 @@ def get_cached_response(request: Request):
         if cached_response is not None:
             return cached_response
     except Exception as e:
-        print(f"Error when fetching cached response:", e)
+        print("Error when fetching cached response:", e)
 
     return None
 
@@ -42,6 +44,6 @@ def set_cached_response(request: Request, response: Response):
         if not cache.get(cache_key):
             cache.set(cache_key, response)
     except Exception as e:
-        print(f"Error when caching response:", e)
+        print("Error when caching response:", e)
 
     return None

@@ -12,9 +12,7 @@ class APIResponse(SerializableClass):
         self.data = data
 
     def to_dict(self):
-        response_dict = dict()
-        response_dict["status"] = self.status
-
+        response_dict = {"status": self.status}
         if self.message:
             response_dict["message"] = self.message
 

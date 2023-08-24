@@ -9,9 +9,7 @@ from app import create_app
 @pytest.fixture
 def app():
     DEBUG = os.environ.get("DEBUG", "False") == "True"
-    app = create_app(debug=DEBUG)
-
-    return app
+    return create_app(debug=DEBUG)
 
 
 def test_cors_enabled(app):

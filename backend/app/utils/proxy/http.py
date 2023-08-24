@@ -31,5 +31,4 @@ def bytes_to_memory_file(file_bytes: bytes) -> BytesIO:
 
 def download_file_to_memory(url: str, file_type: str) -> BytesIO:
     file_bytes = download_file(url, file_type)
-    file_in_memory = bytes_to_memory_file(file_bytes)
-    return file_in_memory
+    return bytes_to_memory_file(file_bytes)

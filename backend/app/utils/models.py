@@ -27,15 +27,8 @@ def shorten_uuid(input_uuid: uuid.UUID, length: int = 24) -> str:
     str_uuid = str(input_uuid)
     hex_uuid = str_uuid.replace("-", "")
 
-    # Truncate to the desired length
-    truncated_hex = hex_uuid[:length]
-
-    return truncated_hex
+    return hex_uuid[:length]
 
 
 def generate_uuid(length: int = None) -> str:
-    if length:
-        return shorten_uuid(uuid.uuid4())
-
-    str_uuid = str(uuid.uuid4())
-    return str_uuid
+    return shorten_uuid(uuid.uuid4()) if length else str(uuid.uuid4())
